@@ -5,6 +5,7 @@ import { apiReference } from '@scalar/nestjs-api-reference';
 import { AllExceptionsFilter } from './filters/all-exceptions.filter';
 import { config } from 'dotenv';
 import { Logger } from '@nestjs/common';
+import { json, urlencoded } from 'body-parser';
 
 async function bootstrap() {
   // Load environment variables first
@@ -60,8 +61,16 @@ async function bootstrap() {
       // Don't exit the process - let it continue running
     });
 
-    await app.listen(3000);
-    logger.log('Application is running on: http://localhost:3000');
+    app.enableCors({
+      origin: 'http://localhost:3000', // Replace with your frontend's URL
+      credentials: true,
+    });
+
+    app.use(json({ limit: '10mb' }));
+    app.use(urlencoded({ limit: '10mb', extended: true }));
+
+    await app.listen(3001);
+    logger.log('Application is running on: http://localhost:3001');
   } catch (error) {
     logger.error(`Failed to start application: ${error.message}`, error.stack);
     // Don't throw - this would crash the application

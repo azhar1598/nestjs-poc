@@ -27,6 +27,8 @@
     "@nestjs/swagger": "^11.1.5",
     "@scalar/nestjs-api-reference": "^0.4.11",
     "@supabase/supabase-js": "^2.49.4",
+    "bcrypt": "^6.0.0",
+    "body-parser": "^2.2.0",
     "class-validator": "^0.14.1",
     "dotenv": "^16.5.0",
     "reflect-metadata": "^0.2.2",

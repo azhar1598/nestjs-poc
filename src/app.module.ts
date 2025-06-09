@@ -6,6 +6,7 @@ import { DatabaseModule } from './database/database.module';
 import { UserModule } from './modules/user/user.module';
 import { AuthModule } from './auth/auth.module';
 import { AppLoggerService } from './logger/app-logger.service';
+import { PostsModule } from './modules/posts/posts.module';
 
 @Module({
   imports: [
@@ -15,6 +16,7 @@ import { AppLoggerService } from './logger/app-logger.service';
     DatabaseModule,
     UserModule,
     AuthModule,
+    PostsModule,
   ],
   controllers: [AppController],
   providers: [
